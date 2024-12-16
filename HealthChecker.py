@@ -3,7 +3,7 @@ maleusernames = []
 femalepasswords = []
 malepasswords = []
 femaleweights = []
-maleweight = []
+maleweights = []
 
 def loginchoices():
     print("Login Successful!")
@@ -76,8 +76,35 @@ def WaistHipRatio():
         print("Invalid Input, Please Try Again.")
 
 def WeightTracker():
-    asdasd
-    
+    if sex == "1":
+        pastweight = maleweights[index]
+        currentweight = float(input("What is your current weight in kg? "))
+        weightdif = pastweight-currentweight
+        if weightdif == 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"There is no difference between your past and current weight.")
+        elif weightdif < 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"You have gained {abs(weightdif):.2f} kg.")
+        elif weightdif > 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"You have lost {weightdif} kg.")
+        maleweights[index] = currentweight
+    elif sex == "2":
+        pastweight = femaleweights[index]
+        currentweight = float(input("What is your current weight in kg? "))
+        weightdif = pastweight-currentweight
+        if weightdif == 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"There is no difference between your past and current weight.")
+        elif weightdif < 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"You have gained {abs(weightdif):.2f} kg.")
+        elif weightdif > 0:
+            print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
+            print(f"You have lost {weightdif} kg.")
+        femaleweights[index] = currentweight
+
 while True:
     print("Welcome to your Health Checker!")
     print("1. BMI Calculator")
@@ -98,18 +125,20 @@ while True:
         if username in femaleusernames or username in maleusernames:
             print("Username already exists. Please choose a different username.")
         else:
+            password = input("Enter a password: ")
+            weight = float(input("Enter your weight in kg: "))
             while True:
                 sex = input("Are you male or female? (1 for Male, 2 for Female): ")
                 if sex == "1":
-                    password = input("Enter a password: ")
                     maleusernames.append(username)
                     malepasswords.append(password)
+                    maleweights.append(weight)
                     print("Registration successful!")
                     break
                 elif sex == "2":
-                    password = input("Enter a password: ")
                     femaleusernames.append(username)
                     femalepasswords.append(password)
+                    femaleweights.append(weight)
                     print("Registration successful!")
                     break
                 else: 
@@ -123,13 +152,11 @@ while True:
                 if malepasswords[index] == password:
                     sex = "1"
                     loginchoices()
-                    break
             elif username in femaleusernames:
                 index = femaleusernames.index(username)
                 if femalepasswords[index] == password:
                     sex = "2"
                     loginchoices()
-                    break
                 else:
                     print("Incorrect password.")
             else:
