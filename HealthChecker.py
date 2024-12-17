@@ -1,3 +1,4 @@
+#Lists 
 femaleusernames = []
 maleusernames = []
 femalepasswords = []
@@ -14,13 +15,13 @@ def loginchoices():
         print("3. Weight Tracker")
         print("4. Logout")
         choicelogin = input("Choose an option (1/2/3/4): ")
-        if choicelogin == "1":
+        if choicelogin == "1": # Open BMI Calculator
             BMI()
-        elif choicelogin == "2":
+        elif choicelogin == "2": # Open Waist to Hip Ratio
             WaistHipRatio()
-        elif choicelogin == "3":
+        elif choicelogin == "3": # Open Weight Tracker
             WeightTracker()
-        elif choicelogin == "4":
+        elif choicelogin == "4": # Logout of the program
             print(f"You have been logged out. Thank you {username}")
             break
         else:
@@ -29,10 +30,11 @@ def loginchoices():
 def BMI():
     weight = float(input("What is your weight in kg? "))
     cm = float(input("What is your height in cm? "))
-    height = cm/100
-    bmi = weight / (height ** 2)
+    height = cm/100 # Convert height to meters
+    bmi = weight / (height ** 2) # To calculate the BMI
     print(f"Your BMI is: {bmi:.2f}")
     print("You are classified as:")
+     # To clasify your BMI
     if 12 <= bmi < 18.5:
         print("Underweight.")
     elif 18.5 <= bmi < 25:
@@ -47,10 +49,10 @@ def BMI():
         print("BMI is not within chart classifications.")
 
 def WaistHipRatio():
-    if sex == "1":
+    if sex == "1": # For Male
         waist = float(input("What is your waist measurement in cm? "))
         hip = float(input("What is your hip measurement in cm? "))
-        waisthipratio = waist / hip
+        waisthipratio = waist / hip # Calculate Waist-to-Hip Ratio
         print(f"Your Waist-to-Hip Ratio is {waisthipratio:.2f}")
         print("You are classified as:")
         if waisthipratio <= 0.80:
@@ -60,7 +62,7 @@ def WaistHipRatio():
         elif waisthipratio >= 0.85 :
             print("Apple. You have high health risks.")
         return True
-    elif sex == "2":
+    elif sex == "2": # For Female
         waist = float(input("What is your waist measurement in cm? "))
         hip = float(input("What is your hip measurement in cm? "))
         waisthipratio = waist / hip
@@ -76,10 +78,11 @@ def WaistHipRatio():
         print("Invalid Input, Please Try Again.")
 
 def WeightTracker():
-    if sex == "1":
+    if sex == "1": # For Male
         pastweight = maleweights[index]
         currentweight = float(input("What is your current weight in kg? "))
-        weightdif = pastweight-currentweight
+        weightdif = pastweight-currentweight # To Calculate weight difference
+        # Display weight change information
         if weightdif == 0:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"There is no difference between your past and current weight.")
@@ -90,10 +93,11 @@ def WeightTracker():
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"You have lost {weightdif} kg.")
         maleweights[index] = currentweight
-    elif sex == "2":
+    elif sex == "2": # For Female
         pastweight = femaleweights[index]
         currentweight = float(input("What is your current weight in kg? "))
-        weightdif = pastweight-currentweight
+        weightdif = pastweight-currentweight # To Calculate weight difference
+         # Display weight change information
         if weightdif == 0:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"There is no difference between your past and current weight.")
@@ -114,15 +118,14 @@ while True:
     print("5. Exit")
     choice = input("Choose an option (1/2/3/4/5): ")
 
-    if choice == '1':
+    if choice == '1': # For BMI
         BMI()
-    elif choice == '2':
+    elif choice == '2': # For Waist to Hip Ratio
         while True:
             sex = input("What is your sex? (1 for Male, 2 for Female): ")
             if WaistHipRatio() == True:
                 break
-
-    elif choice == '3':
+    elif choice == '3': # For Registration
         username = input("Enter a username: ")
         if username in femaleusernames or username in maleusernames:
             print("Username already exists. Please choose a different username.")
@@ -145,7 +148,7 @@ while True:
                     break
                 else: 
                     print("Invalid Input, Please Try Again.")
-    elif choice == '4':
+    elif choice == '4': # Login
         while True:
             username = input("Enter your username: ")
             password = input("Enter your password: ")
@@ -165,7 +168,7 @@ while True:
                 print("Username not found. Please Try Again.")
 
 
-    elif choice == '5':
+    elif choice == '5': # Exit
         print("Exiting the program. Goodbye!")
         break
     else:
