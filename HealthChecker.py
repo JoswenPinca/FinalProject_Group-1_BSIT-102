@@ -119,7 +119,9 @@ while True:
     elif choice == '2':
         while True:
             sex = input("What is your sex? (1 for Male, 2 for Female): ")
-            WaistHipRatio()
+            if WaistHipRatio() == True:
+                break
+
     elif choice == '3':
         username = input("Enter a username: ")
         if username in femaleusernames or username in maleusernames:
