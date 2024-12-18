@@ -184,7 +184,7 @@ while True:
                     tries += 1
                     print(f"Incorrect password. You have {3-tries} tries left.")
         else:
-            print("Username not found. Please Try Again.")
+            print("Username not found. Register your Username before logging in.")
 
 
     elif choice == '5': # Exit
