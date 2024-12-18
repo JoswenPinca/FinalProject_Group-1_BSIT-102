@@ -5,6 +5,7 @@ femalepasswords = []
 malepasswords = []
 femaleweights = []
 maleweights = []
+tries = 0
 
 def loginchoices():
     print("Login Successful!")
@@ -160,8 +161,13 @@ while True:
                     sex = "1"
                     loginchoices()
                     break
+                elif tries == 2:
+                    print("Incorrect password. You will be returned to the Menu.")
+                    tries=0
+                    break
                 else:
-                    print("Incorrect password.")
+                    tries += 1
+                    print(f"Incorrect password. You have {3-tries} tries left.")
         elif username in femaleusernames:
             index = femaleusernames.index(username)
             while True:
@@ -170,8 +176,13 @@ while True:
                     sex = "2"
                     loginchoices()
                     break
+                elif tries == 2:
+                    print("Incorrect password. You will be returned to the Menu.")
+                    tries=0
+                    break
                 else:
-                    print("Incorrect password.")
+                    tries += 1
+                    print(f"Incorrect password. You have {3-tries} tries left.")
         else:
             print("Username not found. Please Try Again.")
 
