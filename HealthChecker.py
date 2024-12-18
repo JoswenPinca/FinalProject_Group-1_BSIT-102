@@ -126,46 +126,54 @@ while True:
             if WaistHipRatio() == True:
                 break
     elif choice == '3': # For Registration
-        username = input("Enter a username: ")
-        if username in femaleusernames or username in maleusernames:
-            print("Username already exists. Please choose a different username.")
-        else:
-            password = input("Enter a password: ")
-            weight = float(input("Enter your weight in kg: "))
-            while True:
-                sex = input("Are you male or female? (1 for Male, 2 for Female): ")
-                if sex == "1":
-                    maleusernames.append(username)
-                    malepasswords.append(password)
-                    maleweights.append(weight)
-                    print("Registration successful!")
-                    break
-                elif sex == "2":
-                    femaleusernames.append(username)
-                    femalepasswords.append(password)
-                    femaleweights.append(weight)
-                    print("Registration successful!")
-                    break
-                else: 
-                    print("Invalid Input, Please Try Again.")
-    elif choice == '4': # Login
         while True:
-            username = input("Enter your username: ")
-            password = input("Enter your password: ")
-            if username in maleusernames:
-                index = maleusernames.index(username)
+            username = input("Enter a username: ")
+            if username in femaleusernames or username in maleusernames:
+                print("Username already exists. Please choose a different username.")
+            else:
+                password = input("Enter a password: ")
+                weight = float(input("Enter your weight in kg: "))
+                while True:
+                    sex = input("Are you male or female? (1 for Male, 2 for Female): ")
+                    if sex == "1":
+                        maleusernames.append(username)
+                        malepasswords.append(password)
+                        maleweights.append(weight)
+                        print("Registration successful!")
+                        break
+                    elif sex == "2":
+                        femaleusernames.append(username)
+                        femalepasswords.append(password)
+                        femaleweights.append(weight)
+                        print("Registration successful!")
+                        break
+                    else: 
+                        print("Invalid Input, Please Try Again.")
+                break
+    elif choice == '4': # Login
+        username = input("Enter your username: ")
+        if username in maleusernames:
+            index = maleusernames.index(username)
+            while True:
+                password = input("Enter your password: ")
                 if malepasswords[index] == password:
                     sex = "1"
                     loginchoices()
-            elif username in femaleusernames:
-                index = femaleusernames.index(username)
+                    break
+                else:
+                    print("Incorrect password.")
+        elif username in femaleusernames:
+            index = femaleusernames.index(username)
+            while True:
+                password = input("Enter your password: ")
                 if femalepasswords[index] == password:
                     sex = "2"
                     loginchoices()
+                    break
                 else:
                     print("Incorrect password.")
-            else:
-                print("Username not found. Please Try Again.")
+        else:
+            print("Username not found. Please Try Again.")
 
 
     elif choice == '5': # Exit
