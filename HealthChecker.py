@@ -56,24 +56,28 @@ def WaistHipRatio():
         waisthipratio = waist / hip # Calculate Waist-to-Hip Ratio
         print(f"Your Waist-to-Hip Ratio is {waisthipratio:.2f}")
         print("You are classified as:")
-        if waisthipratio <= 0.80:
+        if 0.70 <= waisthipratio <= 0.80:
             print("Pear. You have low health risks.")
         elif 0.80 < waisthipratio < 0.85:
             print("Avocado. You have moderate health risks.")
-        elif waisthipratio >= 0.85 :
+        elif 0.85 < waisthipratio <= 0.98:
             print("Apple. You have high health risks.")
+        else:
+            print("Ratio is not within chart classifications.")
         return True
     elif sex == "2": # For Female
         waist = float(input("What is your waist measurement in cm? "))
         hip = float(input("What is your hip measurement in cm? "))
         waisthipratio = waist / hip
         print(f"Your Waist-to-Hip Ratio is {waisthipratio:.2f}")
-        if waisthipratio <= 0.95:
+        if 0.80 <= waisthipratio <= 0.95:
             print("Pear. You have low health risks.")
         elif 0.95 < waisthipratio < 1:
             print("Avocado. You have moderate health risks.")
-        elif waisthipratio >= 1:
+        elif 1 < waisthipratio <= 1.15:
             print("Apple. You have high health risks.")
+        else:
+            print("Ratio is not within chart classifications.")
         return True
     else:
         print("Invalid Input, Please Try Again.")
