@@ -94,7 +94,7 @@ def WeightTracker():
         elif weightdif < 0:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"You have gained {abs(weightdif):.2f} kg.")
-        elif weightdif > 0:
+        else:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"You have lost {weightdif} kg.")
         maleweights[index] = currentweight
@@ -109,7 +109,7 @@ def WeightTracker():
         elif weightdif < 0:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"You have gained {abs(weightdif):.2f} kg.")
-        elif weightdif > 0:
+        else:
             print(f"Your past weight was {pastweight} and your current weight is {currentweight}.")
             print(f"You have lost {weightdif} kg.")
         femaleweights[index] = currentweight
